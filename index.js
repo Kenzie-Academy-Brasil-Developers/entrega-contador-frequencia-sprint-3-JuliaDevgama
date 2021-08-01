@@ -1,8 +1,8 @@
+let wordscount = {}
 const letterCounts = {} 
 const button = document.getElementById("countButton")
 
 button.addEventListener('click', function(){
-    let list = {}
     let typedText = document.getElementById('textInput').value
     typedText = typedText.toLowerCase(); 
     typedText = typedText.replace(/[^a-z'\s]+/g, ""); 
@@ -14,8 +14,7 @@ button.addEventListener('click', function(){
             letterCounts[currentLetter] = 1
         } else { 
             letterCounts[currentLetter]++; 
-         }
-
+        }
     }
 
     for(let letter in letterCounts){
@@ -24,8 +23,8 @@ button.addEventListener('click', function(){
         span.innerText = textContent
         const letters = document.getElementById('lettersDiv')
         letters.appendChild(span);
-        letters.style.width = '50%'
-        letters.style.height = '50px'
+        letters.style.width = '90%'
+        letters.style.height = '100px'
         letters.style.backgroundColor = 'lightgreen'
         letters.style.boxShadow = " 7px 4px 16px -1px #C7C7C7"
         letters.style.Color = 'black'
@@ -34,14 +33,30 @@ button.addEventListener('click', function(){
         span.style.color = 'black'
     }
     words = typedText.split(/\s/);
-
-    for(let i = 0; i < words.length; i++){
-        const element = words[i]
-        if(wordcount[element]===undefined) {
-            wordcount[element] = 1
-        } else {
-            wordcount[element]++
+    for (let i = 0; i < words.length; i++) {
+        const element = words[i];
+        if (wordscount[element] === undefined) {
+            wordscount[element] = 1; 
+        } else { 
+            wordscount[element]++; 
         }
+    }
+
+    for(let woords in wordscount){
+        const span = document.createElement("span");
+        const textContent = `"${woords}": ${wordscount[woords]}, `;
+        span.innerText = textContent;
+        const letters = document.getElementById("wordsDiv");
+        letters.appendChild(span);
+        letters.id
+        letters.style.width = '90%'
+        letters.style.height = '100px'
+        letters.style.backgroundColor = 'lightgreen'
+        letters.style.boxShadow = " 7px 4px 16px -1px #C7C7C7"
+        letters.style.Color = 'black'
+        letters.style.border = '2px solid gray'
+        letters.style.marginTop = '20px'
+        span.style.color = 'black'
     }
 })
 
